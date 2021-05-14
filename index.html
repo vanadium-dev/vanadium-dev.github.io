@@ -23,10 +23,8 @@ var currentAvatar = "seed";
 
 var c = [color(133, 29, 0), color(184, 31, 0), color(212, 74, 0), color(184, 37, 0), color(184, 64, 0), color(212, 92, 0), color(212, 85, 0)];
 
-var drawAvatar = function(level, x, y, s){
-  if (level === "seed" || level === 0) {
-      //{
-        pushMatrix();
+var seed = function(x, y, s){
+    pushMatrix();
     translate(x, y);
     scale(s);
     noStroke();
@@ -45,10 +43,10 @@ var drawAvatar = function(level, x, y, s){
     ellipse(57,71,3,3);
     ellipse(33,71,3,3);
     popMatrix();
-        //}
-  } else if (level === "seedling" || level === 1) {
-      //{
-        noStroke();
+};
+            
+var seedling = function(x, y, s){
+    noStroke();
     pushMatrix();
     translate(x, y);
     scale(s);
@@ -98,10 +96,10 @@ var drawAvatar = function(level, x, y, s){
     curveVertex(103,279);
     endShape();
     popMatrix();
-        //}
-  } else if (level === "sapling" || level === 2) {
-      //{
-        pushMatrix();
+};
+            
+var sapling = function(x, y, s){
+     pushMatrix();
     translate(x, y);
     scale(s);
     noStroke();
@@ -132,10 +130,10 @@ var drawAvatar = function(level, x, y, s){
     ellipse(53,271,3,3);
     
     popMatrix();
-        //}
-  } else if (level === "tree" || level === 3) {
-      //{
-      pushMatrix();
+};
+            
+var tree = function(x, y, s){
+    pushMatrix();
     translate(x, y);
     scale(s);
     noStroke();
@@ -177,10 +175,10 @@ var drawAvatar = function(level, x, y, s){
     endShape();
     
     popMatrix();
-      //}
-  } else if (level === "ultimate" || level === 4) {
-      //{
-      pushMatrix();
+};
+            
+var ultimate = function(x, y, s){
+    pushMatrix();
     translate(x, y);
     scale(s);
     
@@ -256,7 +254,19 @@ var drawAvatar = function(level, x, y, s){
     bezierVertex(96, 190, 75, 279, 100, 282);
     endShape();
     popMatrix();
-      //}
+};
+            
+var drawAvatar = function(level, x, y, s){
+  if (level === "seed" || level === 0) {
+      seed(x, y, s);
+  } else if (level === "seedling" || level === 1) {
+      seedling(x, y, s);
+  } else if (level === "sapling" || level === 2) {
+       sapling(x, y, s);
+  } else if (level === "tree" || level === 3) {
+       tree(x, y, s);
+  } else if (level === "ultimate" || level === 4) {
+       ultimate(x, y, s);
   } else {
     
   }
