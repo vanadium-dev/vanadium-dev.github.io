@@ -44,6 +44,7 @@ var seed = function(x, y, s){
     ellipse(33,71,3,3);
     popMatrix();
 };
+var sd = get(0, 0, width, height);
             
 var seedling = function(x, y, s){
     noStroke();
@@ -97,6 +98,7 @@ var seedling = function(x, y, s){
     endShape();
     popMatrix();
 };
+var sdling = get(0, 0, width, height);            
             
 var sapling = function(x, y, s){
      pushMatrix();
@@ -131,6 +133,7 @@ var sapling = function(x, y, s){
     
     popMatrix();
 };
+var sap = get(0, 0, width, height);
             
 var tree = function(x, y, s){
     pushMatrix();
@@ -176,6 +179,7 @@ var tree = function(x, y, s){
     
     popMatrix();
 };
+var tr = get(0, 0, width, height);
             
 var ultimate = function(x, y, s){
     pushMatrix();
@@ -255,18 +259,19 @@ var ultimate = function(x, y, s){
     endShape();
     popMatrix();
 };
+var ult = get(0, 0, width, height);
             
 var drawAvatar = function(level, x, y, s){
   if (level === "seed" || level === 0) {
-      seed(x, y, s);
+      image(sd, x, y, s, s);
   } else if (level === "seedling" || level === 1) {
-      seedling(x, y, s);
+      image(sdling, x, y, s, s);
   } else if (level === "sapling" || level === 2) {
-       sapling(x, y, s);
+       image(sap, x, y, s, s);
   } else if (level === "tree" || level === 3) {
-       tree(x, y, s);
+       image(tr, x, y, s, s);
   } else if (level === "ultimate" || level === 4) {
-       ultimate(x, y, s);
+       image(ult, x, y, s, s);
   } else {
     
   }
