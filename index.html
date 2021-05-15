@@ -1,11 +1,231 @@
 <!DOCTYPE html>
 <html>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <head>
         <meta charset="utf-8">
-        <title>New webpage</title>
+        <title>HTML Lab</title>
+        <style>
+            @keyframes fadeIn {
+                100% {
+                    opacity: 1;
+                }
+            }
+            #title{
+                background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/190212_Baeume-Winter-Strategien_header.jpg');
+                background-size: 100%;
+                background-position: center;
+                height: 81vh;
+                width: 88vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 15px;
+                flex-direction: column;
+                font-family: var(--second-font);
+                text-align: center;
+                padding: 30px;
+                transition: all 0.3s;
+                user-select: none;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                color: rgba(245, 245, 245);
+                font-family: 'Zen Dots', cursive; 
+                font-size: 25px;
+            }
+            #title:hover{
+                transform: scale(1.015);
+                font-size: 23px;
+            }
+            .button{
+                color: blue;
+                background: lightblue;
+                border: 2px solid blue;
+                padding: 7px 17px;
+                text-align: center;
+                display: inline-block;
+                font-size: 15px;
+                margin: 8px 2px;
+                transition-duration: 2s;
+                cursor: pointer;
+                font-family: Zen Dots;
+            }
+            .button:hover{
+                background: blue;
+                color: lightblue;
+                box-shadow: 5px 5px;
+            }
+            #home{
+                background: lightgray;
+                text-align: center;
+                padding: 10px;
+            }
+            .pages_titles{
+                font-family: 'Oswald', sans-serif;
+            }
+            p{
+                font-family: cursive, monospace;
+            }
+            #cards{
+                background: black;
+                padding: 10px;
+            }
+            #cards button {
+                display: block;
+                margin: auto;
+                color: blue; background: gray;
+            }
+            #cards p {
+                font-size: 16px;
+                color: black;
+                text-shadow: 0 0 5px gray;
+            }
+            .cards-section{
+                background: white;
+                transform: scale(0.8);
+                padding: 1px;
+            }
+            #explore_button{
+                background: white;
+                padding: 5px;
+                color: gray;
+                border: 5px solid gray;
+                transition: all 0.3s;
+                font-family: mono;
+                text-decoration: none;
+            }
+            #explore_button:hover{
+                background: lightgray;
+            }
+            body{
+                background: gray;
+            }
+        </style>
     </head>
     <body>
-        <canvas id="mycanvas"></canvas> 
+        <div id="title">
+        <h1>Winter.com</h1>
+        <a href="#nav" id="explore_button">Explore</a>
+    </div>
+        
+    <nav id="nav">
+        <div class="nav-home button" onclick="switchToPage(1);">Home</div>
+        <div class="nav-about button" onclick="switchToPage(2);">About</div>
+        <div class="nav-sub button" onclick="switchToPage(3);">Sub</div>
+        <div class="nav-programs button" onclick="switchToPage(4);">Programs</div>
+        <div class="nav-future_programs button" onclick="switchToPage(5);">Future Programs   </div>
+        </nav>
+
+    <!--Home-->
+    <div class="page" id="home">
+        <h1 class="pages_titles">Home</h1>
+        <p>Welcome to my website! There are a couple of things you can see across this site. Why don't you go check them out?<br><br></p>
+        
+        <div id="cards">
+            <div class="cards-section">
+                <p>Want to learn more about me? Then visit the about tab.</p>
+                <button class = "nav-about">About</button>
+            </div>
+            
+            <div class="cards-section">
+                <p>Want to know how and why you should sub to me? Visit the sub tab.</p>
+                <button class = "nav-sub">Sub</button>
+            </div>
+            
+            <div class="cards-section">
+                <p>Want to see my top votes programs? Visit the programs tab.</p>
+                <button class = "nav-programs">Programs</button>
+            </div>
+            
+            <div class="cards-section">
+                <p>Want to know what my future programs will be? Visit the future programs tab.</p>
+                <button class = "nav-future_programs">Future Programs</button>
+            </div>
+        </div>
+    </div>
+
+    <!--About-->
+    <div class="page" id="about">
+        <ul id="profileInfo">
+            <li id="username"></li>
+            <li id="nickname"></li>
+            <li id="dateJoined"></li>
+            <li id="energyPoints"></li>
+            <li id="videosWatched"></li>
+            <li id="programsMade"></li>
+            <li id="votesRecieved"></li>
+            <li id="spinOffsRecieved"></li>
+            <li id="totalBadges"></li>
+        </ul>
+    </div>
+
+    <!--Sub-->
+    <div class="page" id="sub">
+    This is the sub page
+    </div>
+
+    <!--Programs-->
+    <div class="page" id="programs">
+    This is the programs page
+    </div>
+
+    <!--Future Programs-->
+    <div class="page" id="future_programs">
+    This is the future programs page
+    </div>
+    
+    <!--Games-->
+    <div class="page" id="games">
+        <canvas id="mycanvas"></canvas>
+    </div>
+        
+    <footer></footer>
+
+    <script>
+        var pages = document.getElementsByClassName("page")
+        function switchToPage(pageNumber) {
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = "none";
+            }
+            pages[pageNumber - 1].style.display = "block";
+        }
+        switchToPage(1);
+        window.addEventListener("load", function() {
+            document.getElementById("loader").style.textDecoration = "underline";
+        });
+    </script>
+    
+    <!--Information-->
+    <script>
+        var username = "My username is @HTMLforthewin";
+        var nickname = "My nickname is Winter";
+        var dateJoined = "I joined Khan  Academy in 2021-02-16";
+        var energyPoints = "I have a total of 254,633 energy points";
+        var videosWatched = "I watched a total of 70 videos";
+        var programsMade = "I made 80 programs so far";
+        var votesRecieved = "I recieved 707 votes from you awesome KA users";
+        var spinOffsRecieved = "I recieved 22 spin offs from you KA users";
+        var totalBadges = "I earned 36 badges in total";
+    </script>
+    
+    <!--Putting that info onto the webpage-->
+    <script>
+        document.getElementById("username").innerHTML = username;
+        document.getElementById("nickname").innerHTML = nickname;
+        document.getElementById("dateJoined").innerHTML = dateJoined;
+        document.getElementById("energyPoints").innerHTML = energyPoints;
+        document.getElementById("videosWatched").innerHTML = videosWatched;
+        document.getElementById("programsMade").innerHTML = programsMade;
+        document.getElementById("votesRecieved").innerHTML = votesRecieved;
+        document.getElementById("spinOffsRecieved").innerHTML = spinOffsRecieved;
+        document.getElementById("totalBadges").innerHTML = totalBadges;
+    </script>
+
+</body>
+         
     </body>
     <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
     <script>
