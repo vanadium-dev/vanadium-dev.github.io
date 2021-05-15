@@ -173,10 +173,8 @@
     
     <!--Games-->
     <div class="page" id="games">
-        <button onClick="show_hide">Dodge Game</button>
-        <div id="daDiv">
-            <canvas id="mycanvas"></canvas>
-        </div>
+        <h3>Dodge Game</h3>
+        <canvas id="dodgeGame"></canvas>
     </div>
         
     <footer></footer>
@@ -193,17 +191,6 @@
         window.addEventListener("load", function() {
             document.getElementById("loader").style.textDecoration = "underline";
         });
-    </script>
-        
-    <script>
-        function show_hide() {
-          var x = document.getElementById("daDiv");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
     </script>
     
     <!--Information-->
@@ -400,7 +387,7 @@ mouseClicked = function() {
         }};
 
       // Get the canvas that ProcessingJS will use
-      var canvas = document.getElementById("mycanvas"); 
+      var canvas = document.getElementById("dodgeGame"); 
       // Pass the function to ProcessingJS constructor
       var processingInstance = new Processing(canvas, programCode); 
     </script>
