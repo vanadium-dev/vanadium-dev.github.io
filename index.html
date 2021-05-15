@@ -174,7 +174,9 @@
     <!--Games-->
     <div class="page" id="games">
         <button onClick="show_hide">Dodge Game</button>
+        <div id="daDiv">
         <canvas id="mycanvas"></canvas>
+        </div>
     </div>
         
     <footer></footer>
@@ -193,7 +195,7 @@
         });
         
         function show_hide() {
-          var l = document.getElementById("mycanvas");
+          var l = document.getElementById("daDiv");
           if (l.style.display === "none") {
             l.style.display = "block";
           } else {
