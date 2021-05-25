@@ -20,6 +20,7 @@ just restart the program and it should work
 The minigame doesn't always load. If it does this and you don't see it, press restart the program.
 
 Tell me your highscore for the minigame in the T&T!
+Can you beat mine of 9540?
 
 Feedback on this website would be great :D
 -->
@@ -47,7 +48,6 @@ Feedback on this website would be great :D
                 align-items: center;
                 border-radius: 15px;
                 flex-direction: column;
-                font-family: var(--second-font);
                 text-align: center;
                 padding: 30px;
                 transition: all 0.3s;
@@ -185,7 +185,6 @@ Feedback on this website would be great :D
         </style>
     </head>
     <body>
-        <!--<iframe src="https://api-chat-thingy.winter987.repl.co/"></iframe>-->
         <div id="title">
         <h1>Winter.com</h1>
         <a href="#nav" id="explore_button">Explore</a>
@@ -230,21 +229,26 @@ Feedback on this website would be great :D
     <!--About-->
     <div class="page">
         <h1 class="pages_titles">About</h1>
-        <p>My name is Winter. I want to be a software engineer for Khan Academy when I grow up. I am currently semi-active :(</p>
+        <p id="bio"></p>
         <div id="profileInfo">
             <h2>User Statistics</h2>
-            <ul>
-                <li id="username"></li>
-                <li id="nickname"></li>
-                <li id="dateJoined"></li>
-                <li id="energyPoints"></li>
-                <li id="videosWatched"></li>
-                <li id="programsMade"></li>
-                <li id="votesRecieved"></li>
-                <li id="spinOffsRecieved"></li>
-                <li id="totalBadges"></li>
-            </ul>
+            <p id="stats"></p>
         </div>
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>
+            var profileStats = document.getElementById('stats');
+                $.getJSON("https://www.khanacademy.org/api/internal/user/profile?kaid=kaid_335279540512177885166674&callback=?", function(data) {
+                    profileStats.innerHTML = "Points: "+data.points+"<br>Username: "+data.username+"<br>Videos Completed: "+data.countVideosCompleted+"<br>Date Joined: "+data.dateJoined+"<br>";
+                })
+                $.getJSON("https://www.khanacademy.org/api/internal/user/discussion/statistics?kaid=kaid_335279540512177885166674&callback=?", function(data) {
+                    profileStats.innerHTML += "Votes: "+data.votes+"<br>"+"Questions: "+data.questions+"<br>Answers: "+data.answers+"<br>Tips and Thanks: "+data.comments+"<br>Comments: "+data.replies+"<br>";
+                })
+                
+            var bio = document.getElementById('bio');
+                $.getJSON("https://www.khanacademy.org/api/internal/user/profile?kaid=kaid_335279540512177885166674&callback=?", function(data) {
+                    bio.innerHTML = data.bio;
+                })
+        </script>
     </div>
 
     <!--Sub-->
@@ -594,5 +598,7 @@ mouseClicked = function() {
       var processingInstance = new Processing(canvas, programCode); 
     </script>
 </html>
+
+
 
 <!--My longest webpage yet!-->
