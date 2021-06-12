@@ -1,5 +1,23 @@
 <!DOCTYPE html>
 <!--
+ _______          
+(       )|\     /|
+| () () |( \   / )
+| || || | \ (_) / 
+| |(_)| |  \   /  
+| |   | |   ) (   
+| )   ( |   | |   
+|/     \|   \_/   
+                  
+ _______           ______   _______  _______  _______  _______ 
+(  ____ \|\     /|(  ___ \ (  ____ )(  ___  )(  ____ \(  ____ \
+| (    \/| )   ( || (   ) )| (    )|| (   ) || (    \/| (    \/
+| (_____ | |   | || (__/ / | (____)|| (___) || |      | (__    
+(_____  )| |   | ||  __ (  |  _____)|  ___  || | ____ |  __)   
+      ) || |   | || (  \ \ | (      | (   ) || | \_  )| (      
+/\____) || (___) || )___) )| )      | )   ( || (___) || (____/\
+\_______)(_______)|/ \___/ |/       |/     \|(_______)(_______/
+
 Credit to Gray Wolf for the game.
 
 This took 6 days to make! :D
@@ -263,7 +281,7 @@ Feedback on this website would be great :D
         <script>
             $.getJSON("https://www.khanacademy.org/api/internal/user/scratchpads?kaid=kaid_335279540512177885166674&format=pretty&limit=1000&callback=?", function(data){
             for(var i = 0; i < data.scratchpads.length; i++){
-                programs.innerHTML += "<a href="+data.scratchpads[i].url+"><img class='program' src=https://www.khanacademy.org"+data.scratchpads[i].thumb+" width='100'>";
+                programs.innerHTML += "<a href="+data.scratchpads[i].url+"><img class='program' src=https://www.khanacademy.org"+data.scratchpads[i].thumb+" width='100'></a>";
             }
 })
         </script>
