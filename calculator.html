@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+  </head>
+  <body>
+	<!--This draws the canvas on the webpage -->
+    <canvas id="mycanvas"></canvas> 
+  </body>
+ 
+  <!-- Include the processing.js library -->
+  <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+  <script>
+  var programCode = function(processingInstance) {
+    with (processingInstance) {
+      size(500, 600); 
+      frameRate(30);
+        
+      // Paste code from Khan Academy here:
+      var clicked = false;
+
+var output = "", mathSigns = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "*", "-", "+", "=", "CE"];
+
+var numbtn = function(x, y, w, h, mathSign, mathSignSize){
+    fill(100, 100, 100);
+    if(mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h){
+        fill(150, 150, 150);
+        cursor("pointer");
+    }
+    rect(x, y, w, h);
+    fill(0, 0, 0);
+    textAlign(CENTER, CENTER);
+    textSize(mathSignSize);
+    text(mathSign, x+w/2, y+h/2);
+    if(clicked && mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h){
+        for(var i = 0; i < mathSigns.length; i++){
+            if(mathSign === mathSign[i]){
+                output+=mathSign[i];
+            }
+        }
+    }
+};
+
+var outputBox = function(x, y, w, h, txt, txtSize){
+    fill(200, 200, 200);
+    rect(x, y, w, h);
+    fill(0, 0, 0);
+    textAlign(CENTER, CENTER);
+    textSize(txtSize);
+    text(txt, x+w/2, y+h/2);
+};
+
+draw = function(){
+    cursor("default");
+    background(0, 0, 0);
+    textAlign(CENTER, CENTER);
+    textSize(65);
+    fill(255);
+    text("CALCULATOR", 250, 65);
+    outputBox(100, 130, 310, 50, output, 20);
+    numbtn(100, 200, 90, 50, mathSigns[0], 20);
+    numbtn(210, 200, 90, 50, mathSigns[1], 20);
+    numbtn(320, 200, 90, 50, mathSigns[2], 20);
+    numbtn(100, 270, 90, 50, mathSigns[3], 20);
+    numbtn(210, 270, 90, 50, mathSigns[4], 20);
+    numbtn(320, 270, 90, 50, mathSigns[5], 20);
+    numbtn(100, 340, 90, 50, mathSigns[6], 20);
+    numbtn(210, 340, 90, 50, mathSigns[7], 20);
+    numbtn(320, 340, 90, 50, mathSigns[8], 20);
+    numbtn(100, 410, 90, 50, mathSigns[9], 20);
+    numbtn(210, 410, 90, 50, mathSigns[10], 20);
+    numbtn(320, 410, 90, 50, mathSigns[11], 20);
+    numbtn(100, 480, 90, 50, mathSigns[12], 20);
+    numbtn(210, 480, 90, 50, mathSigns[13], 20);
+    fill(100, 100, 100);
+    rect(320,480,90,50);
+    rect(100, 540, 310, 50);
+    fill(0);
+    text("=",320+45,480+25);
+    text("CE", 100+155, 540+25);
+    if(mouseX>320&&mouseX<320+90&&mouseY > 480&&mouseY<480+50){
+        cursor(HAND);
+        if(clicked){
+            output=eval(output)
+        }
+    }
+    if(mouseX>100&&mouseX<100+310&&mouseY > 540&&mouseY<540+50){
+        cursor(HAND);
+        if(clicked){
+            output = "";
+        }
+    }
+    clicked = false;
+};
+
+mouseClicked = function() {
+    clicked = true;
+};
+    }};
+
+  // Get the canvas that ProcessingJS will use
+  var canvas = document.getElementById("mycanvas"); 
+  // Pass the function to ProcessingJS constructor
+  var processingInstance = new Processing(canvas, programCode); 
+  </script>
+</html>
