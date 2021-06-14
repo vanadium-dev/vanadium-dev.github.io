@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <title>Hot List (Mini Challenge 2 Primavera)</title>
+        <style>
+            body{
+                background: black;
+            }
+            h1{
+                color: lightgreen;
+                text-align: center;
+                font-family: 'Noto Sans JP', sans-serif;
+                font-size: 3em;
+            }
+            a{
+                color: orange;
+                font-size: 25px;
+            }
+            hr{
+                border-bottom: 5px solid green;
+            }
+            #programs{
+                text-align: center;
+            }
+            #program{
+                border: 5px solid white;
+            }
+            #more-button{
+                background: red;
+                border: none;
+                border-radius: 20px 40px 20px 40px;
+                cursor: pointer;
+                width: 200px;
+                height: 30px;
+                margin: 35px;
+                transition: all 1.5s;
+            }
+            #more-button:hover{
+                background: orange;
+                border-radius: 40px 20px 40px 20px;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <h1>Hot List</h1>
+    <hr>
+    <div id="programs"></div>
+    
+    <script>
+var amount_of_programs = 30;
+    
+        function getJSON(a, b) {
+            getJSON.callbacks || (getJSON.callbacks = {});
+            var c = "abcdefghijklmnopqrstuvwxyz";
+            c += c.toUpperCase();
+            for (var d = ""; d.length < 9 || getJSON.callbacks[d]; d += c[Math.floor(Math.random() * c.length)]) { }
+            getJSON.callbacks[d] = b, a += a.indexOf("?") > -1 ? "&" : "?", a += "callback=getJSON.callbacks." + d;
+            var e = document.createElement("script");
+            e.src = a, document.head.appendChild(e)
+        }
+        
+        function fetchAPI(){
+            document.querySelector("#programs").innerHTML = "";
+            getJSON("https://www.khanacademy.org/api/internal/scratchpads/top?casing=camel&sort=3&page=2&limit="+amount_of_programs+"&format=pretty&topic_id=xffde7c31", function(data){
+                for(var i = 0; i < data.scratchpads.length; i++){
+                    programs.innerHTML += "<a target='_blank' href="+data.scratchpads[i].url+">"+data.scratchpads[i].title+"<br><img id='program' width='150' height='150' src='https://www.khanacademy.org"+data.scratchpads[i].thumb+"'></a><br>"
+                }
+            })
+        }
+        
+        getJSON("https://www.khanacademy.org/api/internal/scratchpads/top?casing=camel&sort=3&page=2&limit="+amount_of_programs+"&format=pretty&topic_id=xffde7c31", function(data){
+            for(var i = 0; i < data.scratchpads.length; i++){
+            programs.innerHTML += "<a target='_blank' href="+data.scratchpads[i].url+">"+data.scratchpads[i].title+"<br><img id='program' width='150' height='150' src='https://www.khanacademy.org"+data.scratchpads[i].thumb+"'></a><br>"
+  }
+        });
+        
+        function clicked(){
+            amount_of_programs+=10;
+            fetchAPI()
+        }
+    </script>
+    
+    <button id="more-button" onClick="clicked()">More</button>
+    
+    </body>
+</html>
