@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Hot Air Balloon</title> 
+  </head>
+  <body>
+	<!--This draws the canvas on the webpage -->
+    <canvas id="mycanvas"></canvas> 
+  </body>
+ 
+  <!-- Include the processing.js library -->
+  <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+  <script>
+  var programCode = function(processingInstance) {
+    with (processingInstance) {
+      size(500, 600); 
+      frameRate(30);
+        
+      // Paste code from Khan Academy here:
+      var OhNoes = function(x, y) {
+    this.x = x;
+    this.y = y;
+    this.img = getImage("creatures/OhNoes-Hmm");
+    this.sticks = 0;
+};
+
+OhNoes.prototype.draw = function() {
+    fill(255, 0, 0);
+    this.y = constrain(this.y, 0, height-50);
+    image(this.img, this.x, this.y, 40, 40);
+};
+
+OhNoes.prototype.hop = function() {
+    this.img = getImage("creatures/OhNoes");
+    this.y -= 5;
+};
+
+OhNoes.prototype.fall = function() {
+    this.img = getImage("creatures/OhNoes-Hmm");
+    this.y += 5;
+};
+
+OhNoes.prototype.checkForSemicollonGrab = function(stick) {
+    if ((stick.x >= this.x && stick.x <= (this.x + 40)) &&
+        (stick.y >= this.y && stick.y <= (this.y + 40))) {
+        stick.y = -400;
+        this.sticks++;
+    }
+};
+
+var SemiCollon = function(x, y) {
+    this.x = x;
+    this.y = y;
+};
+
+SemiCollon.prototype.draw = function() {
+    fill(255, 255, 255);
+    textAlign(CENTER, CENTER);
+    textFont(createFont("mono"));
+    textSize(20);
+    text(";", this.x, this.y);
+};
+
+var ohNoes = new OhNoes(150, 300);
+
+var semiCollon = [];
+for (var i = 0; i < 40; i++) {  
+    semiCollon.push(new SemiCollon(i * 40 + 300, random(20, 260)));
+}
+
+var grassXs = [];
+for (var i = 0; i < 25; i++) { 
+    grassXs.push(i*20);
+}
+
+draw = function() {
+    
+    // static
+    background(0, 0, 100);
+    fill(130, 79, 43);
+    rectMode(CORNER);
+    rect(0, height*0.90, width, height*0.10);
+    
+    for (var i = 0; i < grassXs.length; i++) {
+        image(getImage("cute/GrassBlock"), grassXs[i], height*0.85, 20, 20);
+        grassXs[i] -= 1;
+        if (grassXs[i] <= -20) {
+            grassXs[i] = width;
+        }
+    }
+    
+    for (var i = 0; i < semiCollon.length; i++) {
+        semiCollon[i].draw();
+        ohNoes.checkForSemicollonGrab(semiCollon[i]);
+        semiCollon[i].x -= 1;
+    }
+    
+    textSize(18);
+    fill(255, 255, 255);
+    textFont(createFont("arial"));
+    text("Score: " + ohNoes.sticks, 40, 30);
+    
+    if (ohNoes.semiCollon/semiCollon.length >= 0.90) {
+        textSize(36);
+        fill(255, 0, 0);
+        text("YOU WIN!!!!", 100, 200);
+    }
+    
+    if (keyIsPressed && keyCode === 0) {
+        ohNoes.hop();
+    } else {
+        ohNoes.fall();
+    }
+    ohNoes.draw();
+};
+
+
+
+
+
+    }};
+
+  // Get the canvas that ProcessingJS will use
+  var canvas = document.getElementById("mycanvas"); 
+  // Pass the function to ProcessingJS constructor
+  var processingInstance = new Processing(canvas, programCode); 
+  </script>
+</html>
