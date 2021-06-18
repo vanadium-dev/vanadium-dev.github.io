@@ -14,14 +14,14 @@
   <script>
   var programCode = function(processingInstance) {
     with (processingInstance) {
-      size(500, 600); 
+      size(1000, 750); 
       frameRate(30);
         
       // Paste code from Khan Academy here:
       draw = function(){
     for (var i = -50; i < height+50; i++) {
         fill(i, 0, 200);
-        ellipse(200, i, width, 80+sin(frameCount)*1);
+        ellipse(200, i, width, 80+sin(frameCount)*5);
     }
 };
 
