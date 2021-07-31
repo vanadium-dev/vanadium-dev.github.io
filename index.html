@@ -281,7 +281,7 @@ Feedback on this website would be great :D
         <script>
             $.getJSON("https://www.khanacademy.org/api/internal/user/scratchpads?kaid=kaid_335279540512177885166674&format=pretty&limit=1000&callback=?", function(data){
             for(var i = 0; i < data.scratchpads.length; i++){
-                programs.innerHTML += data.scratchpads[i].title+"<a href="+data.scratchpads[i].url+"><img class='program' src=https://www.khanacademy.org"+data.scratchpads[i].thumb+" width='100'></a>";
+                programs.innerHTML += "<a href="+data.scratchpads[i].url+"><img class='program' src=https://www.khanacademy.org"+data.scratchpads[i].thumb+" width='100'></a>"+data.scratchpads[i].title;
             }
 })
         </script>
