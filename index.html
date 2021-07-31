@@ -246,7 +246,6 @@ Feedback on this website would be great :D
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/CSS.3.svg/1200px-CSS.3.svg.png" width="82.5px">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Javascript-shield.svg" width="82.5px">
         </div>
-        <p id="bio"></p>
         <div id="profileInfo">
             <h2>User Statistics</h2>
             <p id="stats"></p>
@@ -254,7 +253,7 @@ Feedback on this website would be great :D
         <script>
             var profileStats = document.getElementById('stats');
             $.getJSON("https://www.khanacademy.org/api/internal/user/profile?kaid=kaid_335279540512177885166674&callback=?", function(data) {
-              profileStats.innerHTML = "Points: "+data.points+"<br>Username: "+data.username+"<br>Videos Completed: "+data.countVideosCompleted+"<br>Date Joined: "+data.dateJoined+"<br>";
+              profileStats.innerHTML = "Points: "+data.points+"<br>Username: "+data.username+"<br>Videos Completed: "+data.countVideosCompleted+"<br>Date Joined: "+data.dateJoined+"<br>BIO: "+data.bio+"<br>";
             })
             $.getJSON("https://www.khanacademy.org/api/internal/user/discussion/statistics?kaid=kaid_335279540512177885166674&callback=?", function(data) {
               profileStats.innerHTML += "Votes: "+data.votes+"<br>"+"Questions: "+data.questions+"<br>Answers: "+data.answers+"<br>Tips and Thanks: "+data.comments+"<br>Comments: "+data.replies+"<br>";
