@@ -17,14 +17,10 @@
       ) || |   | || (  \ \ | (      | (   ) || | \_  )| (      
 /\____) || (___) || )___) )| )      | )   ( || (___) || (____/\
 \_______)(_______)|/ \___/ |/       |/     \|(_______)(_______/
-
 Credit to Gray Wolf for the game.
-
 This took 6 days to make! :D
-
 you can visit my website here:
 https://wintertheprogrammer.github.io/
-
 If oh noes says:
 "Your javascript is taking too long to run. Perhaps you have a mistake in your code?"
 just restart the program and it should work.
@@ -42,6 +38,9 @@ Feedback on this website would be great :D
         <meta charset="utf-8">
         <title>Winter.com</title>
         <style>
+            * {
+                box-sizing: border-box;
+            }
             @keyframes fadeIn {
                 100% {
                     opacity: 1;
@@ -153,8 +152,64 @@ Feedback on this website would be great :D
                 background: lightgray;
                 padding: 30px;
             }
+         
+         
+         
+            .program-cards {
+                 display: flex;
+                 justify-content: space-around;
+                 align-items: center;
+                 gap: 10px;
+                 flex-wrap: wrap;
+                 flex: 1;
+                 font-size: 0.95em;
+             }
+             .program-card {
+                 display: grid;
+                 grid-template-columns: 100px 100px;
+                 grid-template-rows: auto;
+                 grid-template-areas:
+                     "thumb thumb"
+                     "title title"
+                     "spinoffs votes";
+                 background-color: rgb(92, 92, 92);
+                 color: white;
+                 margin-bottom: 15px;
+                 border: solid 2px rgba(92, 92, 92);
+                 border-radius: 2px;
+                 text-decoration: none;
+                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+             }
+             .program-card-thumb {
+                 grid-area: thumb;
+                 background-color: rgb(255, 255, 255);
+                 margin-bottom: -5px;
+             }
+             .program-card-title {
+                 grid-area: title;
+                 text-overflow: ellipsis;
+                 white-space: nowrap;
+                 overflow: hidden;
+                 padding: 10px 5px 7px 5px;
+                 background-color: rgb(240, 91, 111);
+             }
+             .program-card-spinoffs {
+                 grid-area: spinoffs;
+             }
+             .program-card-votes {
+                 grid-area: votes;
+             }
+             .program-card-spinoffs,
+             .program-card-votes {
+                 display: flex;
+                 align-items: center;
+                 padding: 5px 5px;
+             }
+         
+         
+         
             #programs{
-                background: lightgray;
+/*                 background: white; */
             }
             .program{
                 margin: 10px 40px;
@@ -279,11 +334,26 @@ Feedback on this website would be great :D
             
         </div>
         <script>
-            $.getJSON("https://www.khanacademy.org/api/internal/user/scratchpads?kaid=kaid_335279540512177885166674&format=pretty&limit=1000&callback=?", function(data){
-            for(var i = 0; i < data.scratchpads.length; i++){
-                programs.innerHTML += "<a href="+data.scratchpads[i].url+"><img class='program' src=https://www.khanacademy.org"+data.scratchpads[i].thumb+" width='100'></a>";
-            }
-})
+            var programs = document.getElementById("programs");
+            var kaid = "kaid_335279540512177885166674";
+         
+            $.getJSON("https://www.khanacademy.org/api/internal/user/scratchpads?kaid=" + kaid + "&limit=1000&callback=?", function(data) {
+                
+                var card = '<div class="program-cards">';
+             
+                data.scratchpads.forEach(function(sp) {
+                    card+= '<a class="program-card" href="' + sp.url + '" target="_blank">';
+                    card+= '<div class="program-card-thumb"><img src="https://www.khanacademy.org' + sp.thumb + '"></div>';
+                    card+= '<div class="program-card-title">' + sp.title + '</div>';
+                    card+= '<div class="program-card-spinoffs">spin-offs: ' + sp.spinoffCount + '</div>';
+                    card+= '<div class="program-card-votes">votes: ' + sp.sumVotesIncremented + '</div>';
+                    card+= '</a>';
+                });
+                
+                card+= '</div>';
+                
+                programs.innerHTML = card;
+             });
         </script>
     </div>
     
