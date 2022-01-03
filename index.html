@@ -1,46 +1,21 @@
 <!DOCTYPE html>
-<!--
- _______          
-(       )|\     /|
-| () () |( \   / )
-| || || | \ (_) / 
-| |(_)| |  \   /  
-| |   | |   ) (   
-| )   ( |   | |   
-|/     \|   \_/   
-                  
- _______           ______   _______  _______  _______  _______ 
-(  ____ \|\     /|(  ___ \ (  ____ )(  ___  )(  ____ \(  ____ \
-| (    \/| )   ( || (   ) )| (    )|| (   ) || (    \/| (    \/
-| (_____ | |   | || (__/ / | (____)|| (___) || |      | (__    
-(_____  )| |   | ||  __ (  |  _____)|  ___  || | ____ |  __)   
-      ) || |   | || (  \ \ | (      | (   ) || | \_  )| (      
-/\____) || (___) || )___) )| )      | )   ( || (___) || (____/\
-\_______)(_______)|/ \___/ |/       |/     \|(_______)(_______/
-Credit to Gray Wolf for the game.
-This took 6 days to make! :D
-you can visit my website here:
-https://wintertheprogrammer.github.io/
-If oh noes says:
-"Your javascript is taking too long to run. Perhaps you have a mistake in your code?"
-just restart the program and it should work.
-The minigame doesn't always load. If it does this and you don't see it, press restart the program.
-Tell me your highscore for the minigame in the T&T!
-Can you beat mine of 9540?
-Feedback on this website would be great :D
--->
 <html>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet">
+        
         <link rel="icon" type="image/*" href="https://cdn.kastatic.org/images/avatars/svg/leaf-blue.svg">
         <meta charset="utf-8">
         <title>Winter.com</title>
         <style>
             * {
                 box-sizing: border-box;
+                transition-duration: 0.3s;
             }
             @keyframes fadeIn {
                 100% {
@@ -64,31 +39,24 @@ Feedback on this website would be great :D
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
-                color: rgba(245, 245, 245);
-                font-family: 'Zen Dots', cursive; 
+                color: blue;
+                font-family: 'Zen Dots', cursive;
                 font-size: 25px;
             }
-            /*#title:hover{
-                transform: scale(1.015);
-                font-size: 23px;
-            }*/
             .button{
                 color: blue;
-                background: lightblue;
+                background: rgb(195, 195, 195);
                 border: 2px solid blue;
                 padding: 1vh 2.7vw;
                 text-align: center;
                 display: inline-block;
                 font-size: 15px;
                 margin: 10px 2px;
-                transition-duration: 2s;
                 cursor: pointer;
-                font-family: Zen Dots;
+                font-family: 'Montserrat', sans-serif;
             }
             .button:hover{
-                background: blue;
-                color: lightblue;
-                box-shadow: 5px 5px;
+                background: rgb(165, 165, 165);
             }
             #home{
                 background: lightgray;
@@ -99,8 +67,9 @@ Feedback on this website would be great :D
                 font-family: 'Oswald', sans-serif;
             }
             p{
-                font-family: 'Comic Sans MS', monospace;
+                font-family: 'Red Hat Text', sans-serif;
                 text-align: center;
+                color: rgb(0, 150, 255);
             }
             #cards{
                 background: black;
@@ -109,32 +78,19 @@ Feedback on this website would be great :D
             #cards button {
                 display: block;
                 margin: auto;
-                color: blue; background: gray;
             }
             #cards p {
                 font-size: 16px;
-                color: black;
-                text-shadow: 0 0 5px gray;
+                color: rgb(0, 50, 150);
+                text-shadow: 0 0 2px gray;
             }
             .cards-section{
                 background: white;
                 transform: scale(0.8);
                 padding: 1px;
             }
-            #explore_button{
-                background: white;
-                padding: 5px;
-                color: gray;
-                border: 5px solid gray;
-                transition: all 0.3s;
-                font-family: mono;
-                text-decoration: none;
-            }
-            #explore_button:hover{
-                background: lightgray;
-            }
             body{
-                background: gray;
+                background: lightgray;
             }
             footer{
                 color: black;
@@ -148,6 +104,7 @@ Feedback on this website would be great :D
             }
             h1, h2, h3, h4, h5, h6{
                 text-align: center;
+                color: blue
             }
             #profileInfo{
                 background: lightgray;
@@ -253,7 +210,6 @@ Feedback on this website would be great :D
     <body>
         <div id="title">
         <h1>Winter.com</h1>
-        <a href="#nav" id="button">Explore</a>
     </div>
     
     <nav id="nav">
