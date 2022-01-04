@@ -221,8 +221,20 @@
     </head>
     <body>
         <div id="title">
-        <h1>Winter.com</h1>
-    </div>
+            <h1>Winter.com</h1>
+        </div>
+        
+        <script>
+            let backgrounds = ["https://images.unsplash.com/photo-1457269449834-928af64c684d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", "https://images.unsplash.com/photo-1489674267075-cee793167910?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80", "https://images.unsplash.com/photo-1485433592409-9018e83a1f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=421&q=80", "https://images.unsplash.com/photo-1547754980-3df97fed72a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", "https://images.unsplash.com/photo-1486496146582-9ffcd0b2b2b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"]
+            let counter = 0;
+            setInterval(function(){ 
+                counter++;
+                if(counter > backgrounds.length-1){
+                    counter = 0;
+                }
+                document.getElementById("background").style.backgroundImage = backgrounds[counter]; 
+            }, 1000)
+        </script>
     
     <nav id="nav">
         <div class="nav-home button" onclick="javascript:changePage(1);">Home</div>
